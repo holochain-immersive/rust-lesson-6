@@ -1,0 +1,26 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="Description" content="Put your description here."><base href="/"><style>body,html{margin:0;padding:0;font-family:sans-serif;background-color:#ededed;--r-main-font-size:24px;--r-heading-margin:20px 0 12px 0}.rust{font-size:1.25em}section{top:10px!important}.hljs-keyword{color:#817eed!important}.hljs-literal{color:#ff90b8!important}.slides{width:75%!important}.container{top:0!important;display:flex!important;flex-direction:row!important}.column{flex:1}section{text-align:left}.popover{position:absolute;background-color:#4d4d4d;padding:1rem 2rem;box-shadow:0 2px 5px 0 rgba(0,0,0,.26);border-radius:10px;width:auto;transform:translate(35px,-15px)}.popover:after{content:"";position:absolute;top:6px;left:-10px;border-style:solid;border-width:25px 25px 0;border-color:#4d4d4d transparent;display:block;width:0;z-index:1;transform:translate(-50%,50%) rotate(90deg)}.reveal pre code{max-height:800px!important}</style><link rel="stylesheet" href="rust-lesson-6/bce6cb85.css"><link rel="stylesheet" href="rust-lesson-6/5265d60d.css"><link rel="stylesheet" href="rust-lesson-6/86125abe.css"><title>Lesson 6</title></head><body><div class="reveal"><div class="slides"><section><h1>Tests</h1></section><section><fragment language="markdown" animate="by-line with-ancestry">### Test basics - Tests are located in separate mod with `#[cfg(test)]` attribute - Each unit test is a function marked with `#[test]` attribute - Test functions take no arguments and return no value - Tests are executed with `cargo test` - Single test can be executed with `cargo test fn_name`</fragment></section><section><fragment language="markdown" animate="by-line with-ancestry">### Test syntax - Two macros - `assert!(expression)` - panics if expression evaluates to false - `assert_eq!(left, right)` - panics if `left` is not equal `right`</fragment><fragment animate="by-line balanced separate-comments"><pre>            <code class="rust" data-noescape="">
+pub fn add(a: i32, b: i32) -&gt; i32 {
+    a + b
+}
+&nbsp;
+#[cfg(test)]
+mod tests {
+    use super::*; // Import add function to test mod's scope
+&nbsp;
+    #[test]
+    fn test_add() {
+        assert_eq!(add(2, 2), 4);
+    }
+&nbsp;
+    #[test]
+    fn test_add_failure() {
+        assert_eq!(add(2, 2), 5);
+    }
+&nbsp;
+    #[test]
+    fn always_fails() {
+        panic!("I always fail"); // Test fails when test function panics
+    }
+}    
+            </code>
+          </pre></fragment></section><section><fragment language="markdown" animate="by-line with-ancestry">### Additional details - Tests compile entire code, not only test functions - Tests suppress stdout (e.g.`println!()`) output - If you want to see stdout run `cargo test -- --nocapture` - Tests run in parallel in random order - You can write integration tests in the "tests" folder of your crate - Functions with the `#[test]` macro defined in a file in that folder will be executed as an integration test</fragment></section><section><fragment language="markdown" animate="by-line with-ancestry"></fragment><h1>That's it!</h1></section></div></div><script type="module" src="./rust-lesson-6/0c08f7fc.js"></script></body></html>
