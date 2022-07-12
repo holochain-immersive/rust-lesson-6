@@ -1,8 +1,8 @@
-# Holochain Immersive: Lesson 4
+# Holochain Immersive: Lesson 6
 
 Source code for the lesson slides. Visit the slides here:
 
-https://holochain-immersive.github.io/rust-lesson-4/
+https://holochain-immersive.github.io/rust-lesson-6/
 
 ## Setup Instructions
 

@@ -18,6 +18,15 @@
       --r-heading-margin: 20px 0 12px 0;
     }
 
+    .rust {
+      font-size: 1.25em;
+    }
+
+    section {
+      top: 10px !important;
+    }
+
+
     .hljs-keyword {
       color: #817eed !important;
     }
@@ -75,7 +84,7 @@
   <link rel="stylesheet" href="/node_modules/reveal.js/dist/reveal.css" />
   <link rel="stylesheet" href="/node_modules/reveal.js/dist/theme/black.css" />
   <link rel="stylesheet" href="/node_modules/reveal.js/plugin/highlight/monokai.css" />
-  <title>Lesson 4</title>
+  <title>Lesson 6</title>
 </head>
 
 <body>
@@ -85,15 +94,67 @@
         <h1>Tests</h1>
       </section>
       <section>
-        <h2>Header</h2>
+        <fragment language="markdown" animate="by-line with-ancestry">
+          ### Test basics
+          - Tests are located in separate mod with `#[cfg(test)]` attribute
+          - Each unit test is a function marked with `#[test]` attribute
+          - Test functions take no arguments and return no value
+          - Tests are executed with `cargo test`
+          - Single test can be executed with `cargo test fn_name`
+        </fragment>
+      </section>
+      <section>
+        <fragment language="markdown" animate="by-line with-ancestry">
+          ### Test syntax
+          - Two macros
+            - `assert!(expression)`
+              - panics if expression evaluates to false
+            - `assert_eq!(left, right)`
+              - panics if `left` is not equal `right`
+        </fragment>
         <fragment animate="by-line balanced separate-comments">
           <pre>
             <code class="rust" data-noescape>
+pub fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+&nbsp;
+#[cfg(test)]
+mod tests {
+    use super::*; // Import add function to test mod's scope
+&nbsp;
+    #[test]
+    fn test_add() {
+        assert_eq!(add(2, 2), 4);
+    }
+&nbsp;
+    #[test]
+    fn test_add_failure() {
+        assert_eq!(add(2, 2), 5);
+    }
+&nbsp;
+    #[test]
+    fn always_fails() {
+        panic!("I always fail"); // Test fails when test function panics
+    }
+}    
             </code>
           </pre>
         </fragment>
       </section>
       <section>
+        <fragment language="markdown" animate="by-line with-ancestry">
+          ### Additional details
+          - Tests compile entire code, not only test functions
+          - Tests suppress stdout (e.g.`println!()`) output
+          - If you want to see stdout run `cargo test -- --nocapture`
+          - Tests run in parallel in random order
+          - You can write integration tests in the "tests" folder of your crate
+            - Functions with the `#[test]` macro defined in a file in that folder will be executed as an integration test
+        </fragment>
+      </section>
+      <section>
+        <fragment language="markdown" animate="by-line with-ancestry"></fragment>
         <h1>That's it!</h1>
       </section>
     </div>
@@ -106,7 +167,7 @@
     import RevealNotes from "reveal.js/plugin/notes/notes.esm.js";
     import RevealNestedFragments from "reveal.js-nested-fragments";
     import RevealEliminateEmtpyLines from "reveal.js-eliminate-empty-lines";
-    import RevealAnimateFragments from "reveal.js-animate-fragments";
+    import RevealAnimate from "reveal.js-animate-fragments";
 
     let deck = new Reveal({
       transition: "none",
@@ -116,7 +177,7 @@
         RevealNotes,
         RevealNestedFragments,
         RevealEliminateEmtpyLines,
-        RevealAnimateFragments
+        RevealAnimate
       ],
     });
     deck.initialize();

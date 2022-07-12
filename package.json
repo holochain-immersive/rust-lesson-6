@@ -1,5 +1,5 @@
 {
-  "name": "lesson-4",
+  "name": "lesson-6",
   "description": "Webcomponent slides-sl following open-wc recommendations",
   "license": "MIT",
   "author": "guillem.cordoba@gmail.com",
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "reveal.js": "^4.3.1",
-    "reveal.js-animate-fragments": "^0.0.5",
+    "reveal.js-animate-fragments": "^0.0.8",
     "reveal.js-eliminate-empty-lines": "^0.0.4",
     "reveal.js-nested-fragments": "^0.0.2"
   },

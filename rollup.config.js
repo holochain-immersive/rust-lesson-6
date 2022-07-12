@@ -18,7 +18,7 @@ export default {
     /** Enable using HTML as rollup entrypoint */
     html({
       minify: true,
-      publicPath: "rust-lesson-4",
+      publicPath: "rust-lesson-6",
     }),
     /** Resolve bare module imports */
     nodeResolve(),
