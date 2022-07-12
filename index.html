@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="Description" content="Put your description here." />
+  <base href="/" />
+
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background-color: #ededed;
+      --r-main-font-size: 24px;
+      --r-heading-margin: 20px 0 12px 0;
+    }
+
+    .hljs-keyword {
+      color: #817eed !important;
+    }
+
+    .hljs-literal {
+      color: #ff90b8 !important;
+    }
+
+    .slides {
+      width: 75% !important;
+    }
+
+    .container {
+      top: 0 !important;
+      display: flex !important;
+      flex-direction: row !important;
+    }
+
+    .column {
+      flex: 1;
+    }
+
+    section {
+      text-align: left;
+    }
+
+    .popover {
+      position: absolute;
+      background-color: #4d4d4d;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+      border-radius: 10px;
+      width: auto;
+      transform: translate(35px, -15px);
+    }
+
+    .popover:after {
+      content: "";
+      position: absolute;
+      top: 6px;
+      left: -10px;
+      border-style: solid;
+      border-width: 25px 25px 0;
+      border-color: #4d4d4d transparent;
+      display: block;
+      width: 0;
+      z-index: 1;
+      transform: translate(-50%, 50%) rotate(90deg);
+    }
+
+    .reveal pre code {
+      max-height: 800px !important;
+    }
+  </style>
+  <link rel="stylesheet" href="/node_modules/reveal.js/dist/reveal.css" />
+  <link rel="stylesheet" href="/node_modules/reveal.js/dist/theme/black.css" />
+  <link rel="stylesheet" href="/node_modules/reveal.js/plugin/highlight/monokai.css" />
+  <title>Lesson 4</title>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h1>Tests</h1>
+      </section>
+      <section>
+        <h2>Header</h2>
+        <fragment animate="by-line balanced separate-comments">
+          <pre>
+            <code class="rust" data-noescape>
+            </code>
+          </pre>
+        </fragment>
+      </section>
+      <section>
+        <h1>That's it!</h1>
+      </section>
+    </div>
+  </div>
+
+  <script type="module">
+    import Reveal from "reveal.js";
+    import Markdown from "reveal.js/plugin/markdown/markdown.esm.js";
+    import RevealHighlight from "reveal.js/plugin/highlight/highlight.esm.js";
+    import RevealNotes from "reveal.js/plugin/notes/notes.esm.js";
+    import RevealNestedFragments from "reveal.js-nested-fragments";
+    import RevealEliminateEmtpyLines from "reveal.js-eliminate-empty-lines";
+    import RevealAnimateFragments from "reveal.js-animate-fragments";
+
+    let deck = new Reveal({
+      transition: "none",
+      plugins: [
+        Markdown,
+        RevealHighlight,
+        RevealNotes,
+        RevealNestedFragments,
+        RevealEliminateEmtpyLines,
+        RevealAnimateFragments
+      ],
+    });
+    deck.initialize();
+  </script>
+</body>
+
+</html>
